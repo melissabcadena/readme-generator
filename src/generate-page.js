@@ -2,45 +2,59 @@ const generatePage = (promptAnswers) => {
     console.log(promptAnswers);
 
     // destructure prompt answers 
-    const { projectName, description, toc, installation, usage, credits, license, test, githubName, email } = promptAnswers;
+    const { projectName, description, tableOfContents, installation, usage, credits, license, test, githubName, email } = promptAnswers;
 
     return `
-    # ${projectName}
+# ${projectName}
 
-    ## Descripion: 
-    
-    ${description}
+## Descripion: 
 
-    ## Installation
+${description}
 
-    ${installation}
+${generateTOC(tableOfContents)}
 
-    ## Usage
+## Installation
 
-    ${usage}
+${installation}
 
-    ## Credits
+## Usage
 
-    ${credits}
+${usage}
 
-    ## License
+## License
 
-    ${license}
+${license}
 
-    ## Contributing
+## Contributing
 
-    ${credits}
+${credits}
 
-    ## Tests
+## Tests
 
-    ${test}
+${test}
 
-    ## Questions? 
+## Questions? 
 
-    If you have any additional questions, feel free to contact me: 
-    GitHub: https://github.com/${githubName} 
-    Email: ${email}
+If you have any additional questions, feel free to contact me: 
+GitHub: https://github.com/${githubName} 
+Email: ${email}
 
+    `;
+};
+
+// create table of contents section 
+const generateTOC = toc => {
+    if (!toc) {
+        return '';
+    } 
+
+    return `
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
     `;
 };
 
