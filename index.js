@@ -1,7 +1,8 @@
 const inquirer = require('inquirer');
-const fs = require('fs');
-const generatePage = require('./src/generate-page.js');
+const pageTemplate = require('./src/page-template.js');
+const writeFile = require('./utils/generate-page.js')
 
+// asks users questions needed for readme file
 const promptUser = () => {
     return inquirer.prompt([
         {
@@ -139,13 +140,23 @@ const promptUser = () => {
     ])
 };
 
-promptUser()
-    .then(answers => {
-        const pageReadMe = generatePage(answers);
+// promise chain
 
-        fs.writeFile('./dist/README.md', pageReadMe, err => {
-            if (err) throw err;
-        
-            console.log('README.md complete! Checkout README.md to see the output.')
-        })
-    })
+// ask user required questions
+promptUser()
+  .then(answers => {
+      // push those answers to generate the readme template
+    return pageTemplate(answers);
+  })
+  // then write the readme file
+  .then(readMePage => {
+    return writeFile(readMePage);
+  })
+  // if successful, console log the success message
+  .then(writeFileResponse => {
+    console.log(writeFileResponse.message);
+  })
+  .catch(err => {
+      // if error, log error message
+    console.log(err);
+  });
