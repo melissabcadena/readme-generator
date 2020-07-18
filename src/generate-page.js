@@ -5,7 +5,10 @@ const generatePage = (promptAnswers) => {
     const { projectName, description, tableOfContents, installation, usage, credits, license, test, githubName, email } = promptAnswers;
 
     return `
+    
 # ${projectName}
+
+${generateBadge(license)}
 
 ## Descripion: 
 
@@ -23,7 +26,7 @@ ${usage}
 
 ## License
 
-${license}
+This application is covered under the license: ${license}.
 
 ## Contributing
 
@@ -57,5 +60,11 @@ const generateTOC = toc => {
 * [Questions](#questions)
     `;
 };
+
+const generateBadge = (license) => {
+    return `
+    <img src="https://img.shields.io/badge/license-${license}-brightgreen">
+    `
+}
 
 module.exports = generatePage;

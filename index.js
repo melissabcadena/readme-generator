@@ -87,7 +87,7 @@ const promptUser = () => {
             type: 'list',
             name: 'license',
             message: 'Please choose a license for your application. (Required)',
-            choices: ['MIT', 'AUR', 'CPAN', 'CPAN/METACRAN', 'Crates.io', 'CTAN', 'Eclipse Marketplace', 'Hex.pm', 'NPM'],
+            choices: ['MIT', 'Apache', 'GNU', 'ISC', 'Mozilla Public License', 'Boost Software', 'Unlicense', 'CC0-1.0', 'SIL Open Font'],
             validate: licenseInput => {
                 if (licenseInput) {
                   return true;
