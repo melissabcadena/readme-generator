@@ -143,7 +143,7 @@ promptUser()
     .then(answers => {
         const pageReadMe = generatePage(answers);
 
-        fs.writeFile('README.md', pageReadMe, err => {
+        fs.writeFile('./dist/README.md', pageReadMe, err => {
             if (err) throw err;
         
             console.log('README.md complete! Checkout README.md to see the output.')

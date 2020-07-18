@@ -63,7 +63,7 @@ const generateTOC = toc => {
 
 const generateBadge = (license) => {
     return `
-    <img src="https://img.shields.io/badge/license-${license}-brightgreen">
+<img src="https://img.shields.io/badge/license-${license}-brightgreen">
     `
 }
 
