@@ -1,6 +1,11 @@
-const generatePage = (projectTitle, description) => {
+const generatePage = (promptAnswers) => {
+    console.log(promptAnswers);
+
+    // destructure prompt answers 
+    const { projectName, description, toc, installation, usage, credits, license, test, githubName, email } = promptAnswers;
+
     return `
-    # ${projectTitle}
+    # ${projectName}
 
     ## Descripion: 
     
@@ -8,17 +13,34 @@ const generatePage = (projectTitle, description) => {
 
     ## Installation
 
+    ${installation}
+
     ## Usage
+
+    ${usage}
 
     ## Credits
 
+    ${credits}
+
     ## License
 
-    ## Badges
+    ${license}
 
     ## Contributing
 
+    ${credits}
+
     ## Tests
+
+    ${test}
+
+    ## Questions? 
+
+    If you have any additional questions, feel free to contact me: 
+    GitHub: https://github.com/${githubName} 
+    Email: ${email}
+
     `;
 };
 

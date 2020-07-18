@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
-// const fs = require('fs');
-// const generatePage = require('./src/generate-page.js');
+const fs = require('fs');
+const generatePage = require('./src/generate-page.js');
 
 const promptUser = () => {
     return inquirer.prompt([
@@ -139,12 +139,13 @@ const promptUser = () => {
     ])
 };
 
-promptUser().then(answers => console.log(answers));
+promptUser()
+    .then(answers => {
+        const pageReadMe = generatePage(answers);
 
-
-
-// fs.writeFile('README.md', generatePage(projectTitle, description), err => {
-//     if (err) throw err;
-
-//     console.log('README.md complete! Checkout README.md to see the output.')
-// })
+        fs.writeFile('README.md', pageReadMe, err => {
+            if (err) throw err;
+        
+            console.log('README.md complete! Checkout README.md to see the output.')
+        })
+    })
